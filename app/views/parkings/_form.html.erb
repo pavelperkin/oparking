@@ -1,0 +1,12 @@
+<div class="well">
+<%= form_for(@parking, class: "form-inline") do |f| %>
+  <div class="field">
+    <%= f.label :name, 'Название' %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  </br>
+  <div class="actions">
+    <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+</div>

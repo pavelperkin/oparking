@@ -1,0 +1,5 @@
+<% @parkings.each do |parking| %>
+  <div id="parking_<%= parking.id%>">
+    <%= render 'parking_data', parking: parking%>
+  </div>
+<% end %>

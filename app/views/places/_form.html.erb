@@ -1,0 +1,11 @@
+<div class="well">
+<%= form_for(@place, class: "form-inline") do |f| %>
+    <%= f.label :number, 'Номер места' %>
+    <%= f.number_field :number, class: "form-control" %>
+    <%= f.label :parking_id, 'Паркинг' %><br>
+    <%= f.select :parking_id, options_for_select(Parking.all.map{ |x| [x.name, x.id] }),{}, {class: "form-control"} %>
+    </br>
+    <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
+<% end %>
+
+</div>

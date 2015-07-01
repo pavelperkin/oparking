@@ -1,0 +1,18 @@
+<div class="<%= block_width_class %>">
+  <div class="panel <%= panel_type_class(parking) %>">
+    <div class="panel-heading"><span class='place_number'><%= parking.name %></span></div>
+    <div class="panel-body">
+      <% parking.places.each do |place| %>
+        <div class="well <%= occupied?(place) %>">
+          <%= form_for(place, remote: true) do |f| %>
+            <div class="field">
+              <span class='place_number'><%= place.number %></span>
+              <%= f.hidden_field :occupied, value: !place.occupied%>
+              <%= f.submit button_title(place), class: 'pull-right btn btn-primary'%>
+            </div>
+          <%end%>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>
