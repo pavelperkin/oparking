@@ -13,7 +13,7 @@
                 <% if place.occupied %>
                   <span class='driver_data'><%= "#{place.driver.name} #{place.driver.car_number} (#{place.driver.car})"%></span>
                 <%else%>
-                  <%= f.select :driver_id, options_for_select(Driver.all.map{ |x| [x.name, x.id] }),{}, {class: "form-contro"} %>
+                  <%= f.select :driver_id, options_for_select(Driver.all.map{ |x| [x.name, x.id] }),{}, {class: "form-control"} %>
                 <%end%>
                 <%= f.hidden_field :occupied, value: !place.occupied%>
               </div>
