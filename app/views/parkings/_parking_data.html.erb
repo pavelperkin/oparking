@@ -11,9 +11,7 @@
               </div>
               <div class='col-md-7'>
                 <% if place.occupied %>
-                  <span class='driver_data'><%= "#{place.driver.name} #{place.driver.car_number} (#{place.driver.car})"%></span>
-                <%else%>
-                  <%= f.select :driver_id, options_for_select(Driver.all.map{ |x| [x.name, x.id] }),{}, {class: "form-control"} %>
+                  <span class='driver_data'><%=l place.updated_at, format: :short %></span>
                 <%end%>
                 <%= f.hidden_field :occupied, value: !place.occupied%>
               </div>
