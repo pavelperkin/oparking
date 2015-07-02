@@ -24,5 +24,5 @@ set :output, Rails.root.join('log', 'cron.log')
 set :job_template, "bash -l -c ':job'"
 
 every 1.day, :at => '4:30 am' do
-  rake "clean_parking"
+  heroku run rake clean_parking
 end

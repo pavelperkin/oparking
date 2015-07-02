@@ -22,7 +22,7 @@ class PlacesController < ApplicationController
   end
 
   def update
-    @parkings = Parking.all.includes(:places)
+    @parkings = Parking.all.includes(:places, :desc)
     @place.update(place_params)
   end
 
