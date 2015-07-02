@@ -40,6 +40,6 @@ class PlacesController < ApplicationController
     end
 
     def place_params
-      params.require(:place).permit(:number, :parking_id, :occupied)
+      params.require(:place).permit(:number, :parking_id, :occupied, :driver_id)
     end
 end

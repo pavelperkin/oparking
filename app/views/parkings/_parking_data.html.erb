@@ -5,10 +5,21 @@
       <% parking.places.sort_by(&:number).each do |place| %>
         <div class="well <%= occupied?(place) %>">
           <%= form_for(place, remote: true) do |f| %>
-            <div class="field">
-              <span class='place_number'><%= place.number %></span>
-              <%= f.hidden_field :occupied, value: !place.occupied%>
-              <%= f.submit button_title(place), class: 'pull-right btn btn-primary'%>
+            <div class="row">
+              <div class='col-md-1'>
+                <span class='place_number'><%= place.number %></span>
+              </div>
+              <div class='col-md-7'>
+                <% if place.occupied %>
+                  <span class='driver_data'><%= "#{place.driver.name} #{place.driver.car_number} (#{place.driver.car})"%></span>
+                <%else%>
+                  <%= f.select :driver_id, options_for_select(Driver.all.map{ |x| [x.name, x.id] }),{}, {class: "form-contro"} %>
+                <%end%>
+                <%= f.hidden_field :occupied, value: !place.occupied%>
+              </div>
+              <div class='col-md-4'>
+                <%= f.submit button_title(place), class: 'btn btn-primary'%>
+              </div>  
             </div>
           <%end%>
         </div>

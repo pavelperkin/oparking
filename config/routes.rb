@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :drivers
+
   resources :parkings
 
   resources :places
