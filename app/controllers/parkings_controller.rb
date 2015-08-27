@@ -2,7 +2,11 @@ class ParkingsController < ApplicationController
   before_action :set_parking, only: [:show, :edit, :update, :destroy]
 
   def index
-    @parkings = Parking.all.includes(:places)
+    @parkings = Parking.all
+    @places = Place.all
+    @places.map do |p|
+      p.update(occupied: false) if !p.updated_at.today?
+    end
   end
 
   def show
