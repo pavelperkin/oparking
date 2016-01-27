@@ -16,7 +16,11 @@
                 <%= f.hidden_field :occupied, value: !place.occupied%>
               </div>
               <div class='col-md-8'>
-                <%= f.submit button_title(place), class: 'btn btn-lg btn-block btn-primary'%>
+              <% if place.occupied %>
+                <%= f.submit button_title(place), class: 'btn btn-lg btn-block btn-primary', data: { confirm: "Освободить место ##{place.number}?" }%>
+              <% else %>
+                <%= f.submit button_title(place), class: 'btn btn-lg btn-block btn-primary' %>
+              <% end %>
               </div>
             </div>
           <%end%>
