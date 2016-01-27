@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def block_width_class
-    "col-md-#{12/@parkings.count}"
+    "col-md-12"
   end
 
   def panel_type_class(parking)
@@ -12,12 +12,12 @@ module ApplicationHelper
   end
 
   def occupied?(place)
-    place.occupied ? 'occupied' : 'free' 
+    place.occupied ? 'occupied' : 'free'
   end
 
   def button_title(place)
     place.occupied ? 'Освободить' : 'Занять'
   end
-  
+
 end
 
