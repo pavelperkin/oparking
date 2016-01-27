@@ -7,7 +7,7 @@
   */
 
   body {
-  background: linear-gradient(to top, #FFFFFF, #003e65) no-repeat;
+  background: #003e65;
   height: 100% !important;
 }
 
@@ -33,7 +33,7 @@ body, html {
 }
 
 .free {
-  background-color: #d6e9c6; 
+  background-color: #d6e9c6;
 }
 
 .white {
