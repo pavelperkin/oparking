@@ -23,7 +23,14 @@ class PlacesController < ApplicationController
 
   def update
     @parkings = Parking.all.includes(:places, :desc)
-    @place.update(place_params)
+    respond_to do |format|
+      if @place.update(place_params)
+        format.json { render json: @place }
+        format.js { render status: :ok }
+      else
+        format.json { render json: @place.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
