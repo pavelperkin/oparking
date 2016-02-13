@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
   respond_to :js, :html
 
   def index
-    @places = Place.all
+    @places = Place.where(occupied: false).sort_by(&:parking_id)
   end
 
   def show
