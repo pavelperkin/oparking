@@ -1,5 +1,8 @@
+require 'telegram/bot'
+
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
+  after_action :send_telegramm, only: :update
   respond_to :js, :html
 
   def index
@@ -49,4 +52,17 @@ class PlacesController < ApplicationController
     def place_params
       params.require(:place).permit(:number, :parking_id, :occupied, :driver_id)
     end
+
+    def send_telegramm
+      places = Place.where(occupied: false)
+      token = '219468863:AAFYxwTEuOTag_gRKpk-7eglzM6GxeivQsc'
+      if places.count < 4
+        plurl = (places.count == 1 ? 'место' : 'места')
+        Telegram::Bot::Client.run(token) do |bot|
+          bot.api.sendMessage(chat_id: -113195655, text: "Осталось всего #{places.count} #{plurl} на парковке.")
+          break
+        end
+      end
+    end
+
 end

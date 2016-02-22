@@ -28,7 +28,7 @@ gem 'spring',        group: :development
 gem "twitter-bootstrap-rails"
 gem 'rails_12factor', group: :production
 gem 'whenever', :require => false
-gem 'newrelic_rpm'
+gem 'telegram-bot-ruby'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
