@@ -1,6 +1,15 @@
 <div class="<%= block_width_class %>">
   <div class="panel <%= panel_type_class(parking) %>">
-    <div class="panel-heading"><span class='place_number'><%= parking.name %></span></div>
+    <div class="panel_heading row place_number">
+      <div class="col-md-6 col-xs-6 text-left">
+       <%= parking.name %>
+      </div>
+      <div class="col-md-6 col-xs-6 text-right">
+        <%if parking.schema.url %>
+          <%= link_to 'Schema of parking', :controller => 'schema', :url => parking.schema.url %>
+        <%end%>
+      </div>
+    </div>
     <div class="panel-body">
       <% parking.places.sort_by(&:number).each do |place| %>
         <div class="well <%= occupied?(place) %>">
