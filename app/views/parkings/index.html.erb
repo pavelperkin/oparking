@@ -1,3 +1,16 @@
+<nav class="navbar navbar-default">
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <% if params[:show_all] %>
+        <li><%= link_to 'Показывать только свободные паркоместа', root_path %></li>
+
+      <% else %>
+        <li><%= link_to 'Показывать все паркоместа', root_path(show_all: true) %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
 <% @parkings.each do |parking| %>
   <div id="parking_<%= parking.id%>">
     <%= render 'parking_data', parking: parking%>

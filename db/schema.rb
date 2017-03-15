@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170127133424) do
+ActiveRecord::Schema.define(version: 20170315180243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20170127133424) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "schema"
+    t.string   "vault_uid"
   end
 
   create_table "places", force: true do |t|

@@ -7,31 +7,41 @@
     </div>
     <div class="panel-body">
       <% parking.places.sort_by(&:number).each do |place| %>
-        <div class="well <%= occupied?(place) %>">
-          <%= form_for(place, remote: true) do |f| %>
-            <div class="row">
-              <div class='col-md-1'>
-                <span class='place_number'><%= place.number %></span>
-              </div>
-              <div class='col-md-3'>
+        <% if params[:show_all] || !place.occupied %>
+          <div class="well <%= occupied?(place) %>">
+            <%= form_for(place, remote: true) do |f| %>
+              <div class="row">
+                <div class='col-md-1'>
+                  <span class='place_number'><%= place.number %></span>
+                </div>
+                <div class='col-md-3'>
+                  <% if place.occupied %>
+                    <span class='driver_data'><%=l place.updated_at, format: :short %></span>
+                  <%end%>
+                  <%= f.hidden_field :occupied, value: !place.occupied%>
+                </div>
+                <div class='col-md-8'>
                 <% if place.occupied %>
-                  <span class='driver_data'><%=l place.updated_at, format: :short %></span>
-                <%end%>
-                <%= f.hidden_field :occupied, value: !place.occupied%>
+                  <%= f.submit button_title(place), class: 'btn btn-lg btn-block btn-primary', data: { confirm: "Освободить место ##{place.number}?" }%>
+                <% else %>
+                  <%= f.submit button_title(place), class: 'btn btn-lg btn-block btn-primary' %>
+                <% end %>
+                </div>
               </div>
-              <div class='col-md-8'>
-              <% if place.occupied %>
-                <%= f.submit button_title(place), class: 'btn btn-lg btn-block btn-primary', data: { confirm: "Освободить место ##{place.number}?" }%>
-              <% else %>
-                <%= f.submit button_title(place), class: 'btn btn-lg btn-block btn-primary' %>
-              <% end %>
-              </div>
-            </div>
-          <%end%>
-        </div>
+            <%end%>
+          </div>
+        <% end %>
       <%end%>
-      <%if parking.schema.url %>
-        <%= link_to "Схема #{parking.name}", schema_path(parking.id), class: 'btn btn-lg btn-block btn-info pull-right' %>
+      <%if parking.vault_uid.present? %>
+        <a class="btn btn-lg btn-block btn-success" role="button" data-toggle="collapse" href='#<%= "parking_map_#{parking.id}" %>' aria-expanded="false" aria-controls="collapseExample">
+          Схема парковки
+        </a>
+        <div class="collapse" id='<%= "parking_map_#{parking.id}" %>'>
+          <br/>
+          <div class="well">
+            <%= image_tag(parking.vault_uid, class: "img-responsive img-rounded")%>
+          </div>
+        </div>
       <%end%>
     </div>
   </div>
