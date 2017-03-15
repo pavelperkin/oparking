@@ -50,6 +50,6 @@ class ParkingsController < ApplicationController
     end
 
     def parking_params
-      params.require(:parking).permit(:name, :schema)
+      params.require(:parking).permit(:name, :vault_uid)
     end
 end

@@ -30,6 +30,17 @@
           <%end%>
         </div>
       <%end%>
+      <%if parking.vault_uid.present? %>
+        <a class="btn btn-primary" role="button" data-toggle="collapse" href='#<%= "parking_map_#{parking.id}" %>' aria-expanded="false" aria-controls="collapseExample">
+          Схема парковки
+        </a>
+        <div class="collapse" id='<%= "parking_map_#{parking.id}" %>'>
+          <br/>
+          <div class="well">
+            <%= image_tag(parking.vault_uid, class: "img-responsive img-rounded")%>
+          </div>
+        </div>
+      <%end%>
     </div>
   </div>
 </div>
