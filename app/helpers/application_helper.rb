@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def button_title(place)
-    place.occupied ? 'Освободить' : 'Занять'
+    place.occupied ? "Освободить место #{place.number}" : "Занять место #{place.number}"
   end
 
 end

@@ -39,3 +39,50 @@ body, html {
 .white {
   color: white;
 }
+
+@media (max-width: 1024px)
+{
+    input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="button"].btn-block {
+        font-size: 3em;
+        padding: 0.5em 1em;
+    }
+
+    .btn-block {
+        font-size: 3em;
+        padding: 0.5em 1em;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .place_number {
+        font-size: 3em;
+    }
+
+    .panel-info>.panel-heading {
+        font-size: 3em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .navbar-nav>li>a {
+        font-size: 3em;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+    }
+
+    .nav .show-all > a {
+        background: url("baseline_visibility_black_48dp.png") no-repeat;
+        background-position: left 20px center;
+        background-size: 50px;
+        padding-left: 100px;
+    }
+
+    .nav .show-free-only > a {
+        background: url("round_filter_list_black_48dp.png") no-repeat;
+        background-position: left 20px center;
+        background-size: 50px;
+        padding-left: 100px;
+    }
+}
